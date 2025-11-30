@@ -592,5 +592,129 @@ function handlePartialMatch(symbol) {
     }
 }
 
+// ========================================
+// PAGE D'ÉCHANGE DE RUNES
+// ========================================
+
+const rarityDisplayNames = {
+    rare: 'Rare',
+    'super-rare': 'Super-Rare',
+    legendary: 'Légendaire'
+};
+
+const rarityEmojis = {
+    rare: '🔵',
+    'super-rare': '🟡',
+    legendary: '🟣'
+};
+
+document.querySelectorAll('.exchange-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const rarity = btn.dataset.rarity;
+        const cost = parseInt(btn.dataset.cost);
+
+        if (fragments < cost) {
+            addLog('exchange', `Fragments insuffisants ! (${cost} requis)`, 'error');
+            return;
+        }
+
+        // Déterminer le type sélectionné
+        let runeType = '';
+        if (rarity === 'rare') {
+            runeType = document.getElementById('rare-type').value;
+        } else if (rarity === 'super-rare') {
+            runeType = document.getElementById('super-rare-type').value;
+        } else if (rarity === 'legendary') {
+            runeType = document.getElementById('legendary-type').value;
+        }
+
+        // Déduire les fragments
+        fragments -= cost;
+        updateCurrency();
+
+        // Afficher le résultat
+        addLog('exchange', `${rarityEmojis[rarity]} Rune ${rarityDisplayNames[rarity]} de type ${runeType} achetée pour ${cost} fragments !`, 'success');
+    });
+});
+
+// ========================================
+// PAGE CHEAT
+// ========================================
+
+document.querySelectorAll('.cheat-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const resource = btn.dataset.resource;
+        let value = 0;
+
+        switch(resource) {
+            case 'platine':
+                value = parseInt(document.getElementById('cheat-platine').value);
+                if (value >= 0) {
+                    platine = value;
+                    addLog('cheat', `Pièces de platine modifiées: ${value} pp`, 'success');
+                }
+                break;
+            case 'corruption':
+                value = parseInt(document.getElementById('cheat-corruption').value);
+                if (value >= 0) {
+                    corruption = value;
+                    addLog('cheat', `Pièces de corruption modifiées: ${value} 💜`, 'success');
+                }
+                break;
+            case 'fragments':
+                value = parseInt(document.getElementById('cheat-fragments').value);
+                if (value >= 0) {
+                    fragments = value;
+                    addLog('cheat', `Fragments de rune modifiés: ${value} 🧩`, 'success');
+                }
+                break;
+            case 'exhaustion':
+                value = parseInt(document.getElementById('cheat-exhaustion').value);
+                if (value >= 0 && value <= 6) {
+                    exhaustion = value;
+                    document.getElementById('exhaustion-count').textContent = exhaustion;
+
+                    if (exhaustion > 0) {
+                        document.getElementById('exhaustion-warning').style.display = 'block';
+                    } else {
+                        document.getElementById('exhaustion-warning').style.display = 'none';
+                    }
+
+                    if (exhaustion >= 6) {
+                        document.getElementById('slot-spin-btn').disabled = true;
+                        addLog('cheat', `Points d'épuisement modifiés: ${value}/6 (Machine bloquée)`, 'danger');
+                    } else {
+                        document.getElementById('slot-spin-btn').disabled = false;
+                        addLog('cheat', `Points d'épuisement modifiés: ${value}/6`, 'success');
+                    }
+                }
+                break;
+        }
+
+        updateCurrency();
+    });
+});
+
+// Bouton de réinitialisation
+document.querySelector('.cheat-reset-btn').addEventListener('click', () => {
+    platine = 100;
+    corruption = 0;
+    fragments = 0;
+    exhaustion = 0;
+    slotFailCount = 0;
+
+    document.getElementById('cheat-platine').value = 100;
+    document.getElementById('cheat-corruption').value = 0;
+    document.getElementById('cheat-fragments').value = 0;
+    document.getElementById('cheat-exhaustion').value = 0;
+    document.getElementById('exhaustion-count').textContent = 0;
+    document.getElementById('fail-count').textContent = 0;
+    document.getElementById('exhaustion-warning').style.display = 'none';
+    document.getElementById('slot-spin-btn').disabled = false;
+
+    updateCurrency();
+    addLog('cheat', 'Toutes les ressources ont été réinitialisées !', 'info');
+});
+
 // Initialisation
 updateCurrency();

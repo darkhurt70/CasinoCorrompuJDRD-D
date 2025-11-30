@@ -35,6 +35,8 @@
             <button class="tab-btn active" data-game="roulette">🎲 Roulette</button>
             <button class="tab-btn" data-game="lootbox">📦 Lootboxes</button>
             <button class="tab-btn" data-game="slot">🎰 Machine à Sous</button>
+            <button class="tab-btn" data-game="exchange">🧩 Échange de Runes</button>
+            <button class="tab-btn" data-game="cheat">⚙️ Cheat</button>
         </nav>
 
         <!-- Jeu 1: Roulette -->
@@ -176,6 +178,113 @@
             </div>
 
             <div class="game-log" id="slot-log"></div>
+        </section>
+
+        <!-- Page d'échange de Runes -->
+        <section id="exchange-game" class="game-section">
+            <h2>🧩 Échange de Runes</h2>
+            <p class="exchange-description">Utilisez vos fragments de rune pour acheter des runes spécifiques</p>
+
+            <div class="exchange-container">
+                <div class="exchange-item">
+                    <div class="rune-icon rare-rune">🔵</div>
+                    <h3>Rune Rare</h3>
+                    <p class="rune-description">Rune puissante de qualité rare</p>
+                    <p class="exchange-price">Coût: 5 🧩</p>
+                    <div class="rune-type-selector">
+                        <label>Type de rune:</label>
+                        <select id="rare-type">
+                            <option>Attaque</option>
+                            <option>Dégâts</option>
+                            <option>Contrôle</option>
+                            <option>Spéciale</option>
+                        </select>
+                    </div>
+                    <button class="exchange-btn" data-rarity="rare" data-cost="5">Acheter</button>
+                </div>
+
+                <div class="exchange-item">
+                    <div class="rune-icon super-rare-rune">🟡</div>
+                    <h3>Rune Super-Rare</h3>
+                    <p class="rune-description">Rune très puissante avec effets secondaires</p>
+                    <p class="exchange-price">Coût: 12 🧩</p>
+                    <div class="rune-type-selector">
+                        <label>Type de rune:</label>
+                        <select id="super-rare-type">
+                            <option>Attaque</option>
+                            <option>Dégâts</option>
+                            <option>Contrôle</option>
+                            <option>Spéciale</option>
+                        </select>
+                    </div>
+                    <button class="exchange-btn" data-rarity="super-rare" data-cost="12">Acheter</button>
+                </div>
+
+                <div class="exchange-item">
+                    <div class="rune-icon legendary-rune">🟣</div>
+                    <h3>Rune Légendaire</h3>
+                    <p class="rune-description">Effet unique, souvent à usage limité</p>
+                    <p class="exchange-price">Coût: 25 🧩</p>
+                    <div class="rune-type-selector">
+                        <label>Type de rune:</label>
+                        <select id="legendary-type">
+                            <option>Attaque</option>
+                            <option>Dégâts</option>
+                            <option>Contrôle</option>
+                            <option>Spéciale</option>
+                        </select>
+                    </div>
+                    <button class="exchange-btn" data-rarity="legendary" data-cost="25">Acheter</button>
+                </div>
+            </div>
+
+            <div class="game-log" id="exchange-log"></div>
+        </section>
+
+        <!-- Page Cheat -->
+        <section id="cheat-game" class="game-section">
+            <h2>⚙️ Mode Cheat</h2>
+            <p class="cheat-warning">⚠️ Modifiez vos ressources à votre guise</p>
+
+            <div class="cheat-container">
+                <div class="cheat-item">
+                    <label>Pièces de Platine (pp)</label>
+                    <div class="cheat-controls">
+                        <input type="number" id="cheat-platine" min="0" value="100">
+                        <button class="cheat-btn" data-resource="platine">Appliquer</button>
+                    </div>
+                </div>
+
+                <div class="cheat-item">
+                    <label>Pièces de Corruption (💜)</label>
+                    <div class="cheat-controls">
+                        <input type="number" id="cheat-corruption" min="0" value="0">
+                        <button class="cheat-btn" data-resource="corruption">Appliquer</button>
+                    </div>
+                </div>
+
+                <div class="cheat-item">
+                    <label>Fragments de Rune (🧩)</label>
+                    <div class="cheat-controls">
+                        <input type="number" id="cheat-fragments" min="0" value="0">
+                        <button class="cheat-btn" data-resource="fragments">Appliquer</button>
+                    </div>
+                </div>
+
+                <div class="cheat-item">
+                    <label>Points d'Épuisement (Machine à Sous)</label>
+                    <div class="cheat-controls">
+                        <input type="number" id="cheat-exhaustion" min="0" max="6" value="0">
+                        <button class="cheat-btn" data-resource="exhaustion">Appliquer</button>
+                    </div>
+                </div>
+
+                <div class="cheat-actions">
+                    <button class="cheat-reset-btn">Réinitialiser tout</button>
+                </div>
+            </div>
+
+            <div class="game-log" id="cheat-log"></div>
         </section>
     </div>
 

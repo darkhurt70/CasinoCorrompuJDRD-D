@@ -615,4 +615,230 @@ body {
         width: 300px;
         height: 300px;
     }
+
+    .exchange-container,
+    .cheat-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ========================================
+   PAGE D'ÉCHANGE DE RUNES
+   ======================================== */
+
+.exchange-description {
+    text-align: center;
+    color: #9F7AEA;
+    margin-bottom: 30px;
+    font-size: 1.1em;
+}
+
+.exchange-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.exchange-item {
+    background: linear-gradient(135deg, #2d1b4e 0%, #1a0f2e 100%);
+    border: 3px solid #6B46C1;
+    border-radius: 15px;
+    padding: 25px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.exchange-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 35px rgba(107, 70, 193, 0.8);
+}
+
+.rune-icon {
+    font-size: 4em;
+    margin: 15px 0;
+    padding: 20px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.rare-rune {
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.3) 0%, transparent 70%);
+    box-shadow: 0 0 30px rgba(59, 130, 246, 0.5);
+}
+
+.super-rare-rune {
+    background: radial-gradient(circle, rgba(255, 215, 0, 0.3) 0%, transparent 70%);
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+}
+
+.legendary-rune {
+    background: radial-gradient(circle, rgba(159, 122, 234, 0.3) 0%, transparent 70%);
+    box-shadow: 0 0 30px rgba(159, 122, 234, 0.5);
+}
+
+.exchange-item h3 {
+    color: #B794F4;
+    margin: 15px 0;
+    font-size: 1.4em;
+}
+
+.rune-description {
+    color: #9F7AEA;
+    font-size: 0.95em;
+    margin: 10px 0;
+    min-height: 40px;
+}
+
+.exchange-price {
+    color: #FFD700;
+    font-size: 1.3em;
+    font-weight: bold;
+    margin: 15px 0;
+}
+
+.rune-type-selector {
+    margin: 15px 0;
+}
+
+.rune-type-selector label {
+    display: block;
+    color: #B794F4;
+    margin-bottom: 8px;
+    font-size: 0.9em;
+}
+
+.rune-type-selector select {
+    width: 100%;
+    padding: 10px;
+    background: rgba(107, 70, 193, 0.2);
+    border: 2px solid #6B46C1;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.rune-type-selector select:focus {
+    outline: none;
+    border-color: #B794F4;
+    box-shadow: 0 0 10px rgba(183, 148, 244, 0.5);
+}
+
+.exchange-btn {
+    width: 100%;
+    background: linear-gradient(135deg, #6B46C1 0%, #553C9A 100%);
+    border: 2px solid #B794F4;
+    color: #fff;
+    padding: 12px;
+    font-size: 1.1em;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+.exchange-btn:hover {
+    background: linear-gradient(135deg, #553C9A 0%, #6B46C1 100%);
+    box-shadow: 0 0 25px rgba(183, 148, 244, 0.7);
+    transform: scale(1.05);
+}
+
+/* ========================================
+   PAGE CHEAT
+   ======================================== */
+
+.cheat-warning {
+    text-align: center;
+    color: #FFA500;
+    margin-bottom: 30px;
+    font-size: 1.1em;
+    font-weight: bold;
+}
+
+.cheat-container {
+    display: grid;
+    gap: 20px;
+    max-width: 800px;
+    margin: 0 auto 30px auto;
+}
+
+.cheat-item {
+    background: rgba(107, 70, 193, 0.2);
+    border: 2px solid #6B46C1;
+    border-radius: 12px;
+    padding: 20px;
+}
+
+.cheat-item label {
+    display: block;
+    color: #B794F4;
+    font-size: 1.1em;
+    margin-bottom: 12px;
+    font-weight: bold;
+}
+
+.cheat-controls {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.cheat-controls input {
+    flex: 1;
+    padding: 12px;
+    background: rgba(107, 70, 193, 0.3);
+    border: 2px solid #6B46C1;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 1.1em;
+}
+
+.cheat-controls input:focus {
+    outline: none;
+    border-color: #B794F4;
+    box-shadow: 0 0 15px rgba(183, 148, 244, 0.5);
+}
+
+.cheat-btn {
+    background: linear-gradient(135deg, #6B46C1 0%, #553C9A 100%);
+    border: 2px solid #B794F4;
+    color: #fff;
+    padding: 12px 25px;
+    font-size: 1em;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.cheat-btn:hover {
+    background: linear-gradient(135deg, #553C9A 0%, #6B46C1 100%);
+    box-shadow: 0 0 20px rgba(183, 148, 244, 0.6);
+    transform: scale(1.05);
+}
+
+.cheat-actions {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.cheat-reset-btn {
+    background: linear-gradient(135deg, #DC2626 0%, #991B1B 100%);
+    border: 2px solid #EF4444;
+    color: #fff;
+    padding: 15px 40px;
+    font-size: 1.1em;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.cheat-reset-btn:hover {
+    background: linear-gradient(135deg, #991B1B 0%, #DC2626 100%);
+    box-shadow: 0 0 25px rgba(220, 38, 38, 0.6);
+    transform: scale(1.05);
 }

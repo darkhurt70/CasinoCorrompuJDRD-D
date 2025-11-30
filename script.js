@@ -360,6 +360,125 @@ document.querySelectorAll('.buy-box-btn').forEach(btn => {
     });
 });
 
+// Boutons de détails des lootboxes
+const lootboxDetails = {
+    fletrie: {
+        name: 'Boîte Flétrie',
+        cost: 5,
+        runeChance: '40%',
+        fragmentChance: '60%',
+        fragmentAmount: '1d4 (1-4)',
+        rarities: [
+            { name: 'Rare 🔵', chance: '100%' }
+        ]
+    },
+    malveillante: {
+        name: 'Boîte Malveillante',
+        cost: 10,
+        runeChance: '55%',
+        fragmentChance: '45%',
+        fragmentAmount: '1d6 (1-6)',
+        rarities: [
+            { name: 'Rare 🔵', chance: '80%' },
+            { name: 'Super-Rare 🟡', chance: '20%' }
+        ]
+    },
+    abysses: {
+        name: 'Boîte des Abysses',
+        cost: 20,
+        runeChance: '75%',
+        fragmentChance: '25%',
+        fragmentAmount: '1d8 (1-8)',
+        rarities: [
+            { name: 'Rare 🔵', chance: '50%' },
+            { name: 'Super-Rare 🟡', chance: '35%' },
+            { name: 'Légendaire 🟣', chance: '15%' },
+            { name: 'Spéciale ⭐', chance: '5%' },
+            { name: 'Unique ⚫', chance: '1%' }
+        ]
+    },
+    occulte: {
+        name: 'Boîte Occulte',
+        cost: 40,
+        runeChance: '90%',
+        fragmentChance: '10%',
+        fragmentAmount: '2d6 (2-12)',
+        rarities: [
+            { name: 'Rare 🔵', chance: '30%' },
+            { name: 'Super-Rare 🟡', chance: '40%' },
+            { name: 'Légendaire 🟣', chance: '25%' },
+            { name: 'Spéciale ⭐', chance: '20%' },
+            { name: 'Unique ⚫', chance: '5%' }
+        ]
+    },
+    interdite: {
+        name: 'Boîte Interdite',
+        cost: 100,
+        runeChance: '100%',
+        fragmentChance: '0%',
+        fragmentAmount: 'Aucun',
+        rarities: [
+            { name: 'Super-Rare 🟡', chance: '20%' },
+            { name: 'Légendaire 🟣', chance: '50%' },
+            { name: 'Spéciale ⭐', chance: '25%' },
+            { name: 'Unique ⚫', chance: '5%' }
+        ]
+    }
+};
+
+document.querySelectorAll('.details-box-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const boxType = btn.dataset.box;
+        const details = lootboxDetails[boxType];
+
+        const modal = document.getElementById('lootbox-details-modal');
+        const modalName = document.getElementById('modal-box-name');
+        const modalDetails = document.getElementById('modal-box-details');
+
+        modalName.textContent = details.name;
+
+        let detailsHTML = `
+            <div class="details-section">
+                <p class="detail-item"><strong>Coût:</strong> ${details.cost} 💜</p>
+                <p class="detail-item"><strong>Chance de Rune:</strong> ${details.runeChance}</p>
+                <p class="detail-item"><strong>Chance de Fragments:</strong> ${details.fragmentChance}</p>
+                <p class="detail-item"><strong>Fragments possibles:</strong> ${details.fragmentAmount}</p>
+            </div>
+            <div class="details-section">
+                <h4>Raretés des Runes:</h4>
+                <ul class="rarity-list">
+        `;
+
+        details.rarities.forEach(rarity => {
+            detailsHTML += `<li>${rarity.name} - ${rarity.chance}</li>`;
+        });
+
+        detailsHTML += `
+                </ul>
+            </div>
+            <div class="details-section">
+                <p class="detail-note"><em>Types de runes: Attaque, Dégâts, Contrôle, Spéciale, Unique</em></p>
+            </div>
+        `;
+
+        modalDetails.innerHTML = detailsHTML;
+        modal.style.display = 'flex';
+    });
+});
+
+// Fermer le modal
+document.querySelector('.modal-close').addEventListener('click', () => {
+    document.getElementById('lootbox-details-modal').style.display = 'none';
+});
+
+window.addEventListener('click', (e) => {
+    const modal = document.getElementById('lootbox-details-modal');
+    if (e.target === modal) {
+        modal.style.display = 'none';
+    }
+});
+
 function openLootbox(boxType, box) {
     const animationDiv = document.getElementById('lootbox-animation');
     const rewardDiv = document.getElementById('lootbox-reward');

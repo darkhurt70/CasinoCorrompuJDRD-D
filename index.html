@@ -90,6 +90,7 @@
                         <p class="price">5 💜</p>
                         <p class="desc">40% Rune | 60% Fragments (1d4)</p>
                         <button class="buy-box-btn">Acheter</button>
+                        <button class="details-box-btn" data-box="fletrie">Détails</button>
                     </div>
 
                     <div class="lootbox-item" data-box="malveillante">
@@ -98,6 +99,7 @@
                         <p class="price">10 💜</p>
                         <p class="desc">55% Rune | 45% Fragments (1d6)</p>
                         <button class="buy-box-btn">Acheter</button>
+                        <button class="details-box-btn" data-box="malveillante">Détails</button>
                     </div>
 
                     <div class="lootbox-item" data-box="abysses">
@@ -106,6 +108,7 @@
                         <p class="price">20 💜</p>
                         <p class="desc">75% Rune | 25% Fragments (1d8)</p>
                         <button class="buy-box-btn">Acheter</button>
+                        <button class="details-box-btn" data-box="abysses">Détails</button>
                     </div>
 
                     <div class="lootbox-item" data-box="occulte">
@@ -114,6 +117,7 @@
                         <p class="price">40 💜</p>
                         <p class="desc">90% Rune | 10% Fragments (2d6)</p>
                         <button class="buy-box-btn">Acheter</button>
+                        <button class="details-box-btn" data-box="occulte">Détails</button>
                     </div>
 
                     <div class="lootbox-item" data-box="interdite">
@@ -122,12 +126,22 @@
                         <p class="price">100 💜</p>
                         <p class="desc">100% Rune garantie</p>
                         <button class="buy-box-btn">Acheter</button>
+                        <button class="details-box-btn" data-box="interdite">Détails</button>
                     </div>
                 </div>
 
                 <div class="opening-animation" id="lootbox-animation">
                     <div class="opening-box"></div>
                     <div class="reward-display" id="lootbox-reward"></div>
+                </div>
+
+                <!-- Modal de détails -->
+                <div class="modal" id="lootbox-details-modal">
+                    <div class="modal-content">
+                        <span class="modal-close">&times;</span>
+                        <h3 id="modal-box-name">Détails de la boîte</h3>
+                        <div id="modal-box-details"></div>
+                    </div>
                 </div>
             </div>
 

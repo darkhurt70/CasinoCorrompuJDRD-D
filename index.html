@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎰 Casino Corrompu</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header avec les monnaies -->
+        <header class="casino-header">
+            <h1>🎰 Casino Corrompu</h1>
+            <div class="currency-display">
+                <div class="currency">
+                    <span class="currency-label">Pièces de Platine:</span>
+                    <span id="platine-count" class="currency-value">100</span>
+                    <span class="currency-symbol">pp</span>
+                </div>
+                <div class="currency corruption">
+                    <span class="currency-label">Pièces de Corruption:</span>
+                    <span id="corruption-count" class="currency-value">0</span>
+                    <span class="currency-symbol">💜</span>
+                </div>
+                <div class="currency fragments">
+                    <span class="currency-label">Fragments de Rune:</span>
+                    <span id="fragments-count" class="currency-value">0</span>
+                    <span class="currency-symbol">🧩</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Navigation entre les jeux -->
+        <nav class="game-tabs">
+            <button class="tab-btn active" data-game="roulette">🎲 Roulette</button>
+            <button class="tab-btn" data-game="lootbox">📦 Lootboxes</button>
+            <button class="tab-btn" data-game="slot">🎰 Machine à Sous</button>
+        </nav>
+
+        <!-- Jeu 1: Roulette -->
+        <section id="roulette-game" class="game-section active">
+            <h2>🎲 Roulette Corrompue</h2>
+
+            <div class="roulette-container">
+                <div class="roulette-wheel">
+                    <canvas id="roulette-canvas" width="400" height="400"></canvas>
+                    <div id="roulette-result" class="result-display"></div>
+                </div>
+
+                <div class="betting-area">
+                    <h3>Placer vos mises</h3>
+
+                    <div class="bet-input">
+                        <label>Montant (pp):</label>
+                        <input type="number" id="roulette-bet" min="1" value="10">
+                    </div>
+
+                    <div class="bet-options">
+                        <button class="bet-btn red" data-bet="rouge">Rouge (x2)</button>
+                        <button class="bet-btn black" data-bet="noir">Noir (x2)</button>
+                        <button class="bet-btn green" data-bet="vert">Vert (x35)</button>
+                        <button class="bet-btn" data-bet="pair">Pair (x2)</button>
+                        <button class="bet-btn" data-bet="impair">Impair (x2)</button>
+                    </div>
+
+                    <div class="number-bet">
+                        <label>Numéro (1-35, x35):</label>
+                        <input type="number" id="number-bet" min="0" max="35" placeholder="0-35">
+                        <button class="bet-btn" id="bet-number">Miser sur numéro</button>
+                    </div>
+
+                    <button id="spin-btn" class="action-btn">LANCER LA ROULETTE</button>
+                </div>
+            </div>
+
+            <div class="game-log" id="roulette-log"></div>
+        </section>
+
+        <!-- Jeu 2: Lootboxes -->
+        <section id="lootbox-game" class="game-section">
+            <h2>📦 Lootboxes de Runes Corrompues</h2>
+
+            <div class="lootbox-container">
+                <div class="lootbox-shop">
+                    <div class="lootbox-item" data-box="fletrie">
+                        <h3>Boîte Flétrie</h3>
+                        <div class="box-icon">📦</div>
+                        <p class="price">5 💜</p>
+                        <p class="desc">40% Rune | 60% Fragments (1d4)</p>
+                        <button class="buy-box-btn">Acheter</button>
+                    </div>
+
+                    <div class="lootbox-item" data-box="malveillante">
+                        <h3>Boîte Malveillante</h3>
+                        <div class="box-icon">📦</div>
+                        <p class="price">10 💜</p>
+                        <p class="desc">55% Rune | 45% Fragments (1d6)</p>
+                        <button class="buy-box-btn">Acheter</button>
+                    </div>
+
+                    <div class="lootbox-item" data-box="abysses">
+                        <h3>Boîte des Abysses</h3>
+                        <div class="box-icon">📦</div>
+                        <p class="price">20 💜</p>
+                        <p class="desc">75% Rune | 25% Fragments (1d8)</p>
+                        <button class="buy-box-btn">Acheter</button>
+                    </div>
+
+                    <div class="lootbox-item" data-box="occulte">
+                        <h3>Boîte Occulte</h3>
+                        <div class="box-icon">📦</div>
+                        <p class="price">40 💜</p>
+                        <p class="desc">90% Rune | 10% Fragments (2d6)</p>
+                        <button class="buy-box-btn">Acheter</button>
+                    </div>
+
+                    <div class="lootbox-item" data-box="interdite">
+                        <h3>Boîte Interdite</h3>
+                        <div class="box-icon">📦</div>
+                        <p class="price">100 💜</p>
+                        <p class="desc">100% Rune garantie</p>
+                        <button class="buy-box-btn">Acheter</button>
+                    </div>
+                </div>
+
+                <div class="opening-animation" id="lootbox-animation">
+                    <div class="opening-box"></div>
+                    <div class="reward-display" id="lootbox-reward"></div>
+                </div>
+            </div>
+
+            <div class="game-log" id="lootbox-log"></div>
+        </section>
+
+        <!-- Jeu 3: Machine à Sous -->
+        <section id="slot-game" class="game-section">
+            <h2>🎰 L'Œil du Destin Pourpre</h2>
+
+            <div class="slot-container">
+                <div class="slot-machine">
+                    <h3 class="slot-title">L'Œil du Destin Pourpre</h3>
+                    <div class="slot-message" id="slot-message">Tente ta chance... si tu l'oses.</div>
+
+                    <div class="slot-reels">
+                        <div class="reel" id="reel1">
+                            <div class="symbol">💀</div>
+                        </div>
+                        <div class="reel" id="reel2">
+                            <div class="symbol">💀</div>
+                        </div>
+                        <div class="reel" id="reel3">
+                            <div class="symbol">💀</div>
+                        </div>
+                    </div>
+
+                    <div class="slot-info">
+                        <p>Coût: 5 💜 par tour</p>
+                        <p class="warning">⚠️ Échecs consécutifs: <span id="fail-count">0</span>/3</p>
+                        <p class="danger" id="exhaustion-warning" style="display: none;">
+                            Points d'épuisement: <span id="exhaustion-count">0</span>/6
+                        </p>
+                    </div>
+
+                    <button id="slot-spin-btn" class="action-btn">TOURNER (5 💜)</button>
+                </div>
+
+                <div class="slot-paytable">
+                    <h4>Table des gains</h4>
+                    <div class="paytable-item">💀💀💀 - Objet Rare</div>
+                    <div class="paytable-item">🔥🔥🔥 - Objet Super-Rare</div>
+                    <div class="paytable-item">👁️👁️👁️ - Objet Légendaire</div>
+                    <div class="paytable-item">💎💎💎 - 5d4 Fragments</div>
+                    <div class="paytable-item">🪙🪙🪙 - 50 💜</div>
+                    <div class="paytable-item">❌❌❌ - Effet néfaste</div>
+                </div>
+            </div>
+
+            <div class="game-log" id="slot-log"></div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

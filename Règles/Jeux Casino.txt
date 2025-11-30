@@ -1,0 +1,214 @@
+.
+
+🎰 Système de Casino Corrompu – Cahier des charges (Jeu 1 et 2)
+📌 Monnaie principale : Pièces de Corruption
+
+Description : Pièces violettes, d'origine magique/maléfique, gagnées uniquement via les jeux du casino.
+
+Conversion : Les joueurs misent avec des pièces de platine (pp) et reçoivent leurs gains exclusivement en pièces de corruption.
+
+Utilisation : Ces pièces permettent d’acheter des objets maudits, des améliorations obscures… ou des lootboxes.
+
+🎲 Jeu 1 : Roulette corrompue
+Objectif
+
+Créer une roulette classique à 35 cases avec une apparence altérée (runes, teintes corrompues) et des mécaniques modifiées uniquement sur les récompenses.
+
+Interface et Règles
+
+Nombre de cases : 35
+
+Rouge : 17 cases
+
+Noir : 17 cases
+
+Vert : 1 case (case spéciale, rare)
+
+Types de paris autorisés :
+
+Pari sur une couleur (Rouge, Noir, Vert)
+
+Pari sur pair ou impair
+
+Pari sur un numéro précis
+
+Mise
+
+Unité de mise : Pièce de platine (1 pp minimum)
+
+Mise libre selon la règle de la table (à définir par le MJ)
+
+Gains
+Type de Pari	Multiplicateur	Récompense en pièces de corruption
+Couleur (R/N)	x2	Ex : 1 pp → 2 pièces de corruption
+Pair / Impair	x2	
+Numéro précis	x35	
+Vert (case unique)	x35	Bonus RP possible
+Mécaniques spéciales
+
+Apparence : Roue en obsidienne, chiffres gravés de runes violettes.
+
+Sensation : Une aura maléfique semble s’échapper des pièces à chaque tour.
+
+📦 Jeu 2 : Lootboxes de Runes corrompues
+Objectif
+
+Offrir un système de boîtes mystères achetables avec les pièces de corruption, contenant des runes aux effets puissants ou des fragments de rune échangeables.
+
+🧩 Types de Runes
+
+Attaque
+
+Dégâts
+
+Contrôle
+
+Spéciale (plus rare)
+
+Unique (extrêmement rare)
+
+⭐ Rareté des Runes
+Rareté	Couleur	Description
+Rare	Bleu	Puissante
+Super-Rare	Doré	Très puissante avec effets secondaires
+Légendaire	Violet pur	Effet unique, souvent à usage limité
+Unique	Noir & Violet	Artefacts d’un autre monde, instables
+🧃 Fragment de Rune
+
+Utilité : Permet d’acheter une rune spécifique (type + rareté).
+
+Coût d’achat en fragments :
+
+Rare : 5 fragments
+
+Super-Rare : 12 fragments
+
+Légendaire : 25 fragments
+
+🛍️ Les Lootboxes
+Nom	Coût (pièces corruption)	Chances Rune	Chances Fragment	Quantité Fragment possible	Notes
+Boîte Flétrie	5	40%	60%	1d4	Runique rare max
+Boîte Malveillante	10	55%	45%	1d6	Jusqu’à super-rare
+Boîte des Abysses	20	75%	25%	1d8	Rare → légendaire possible
+Boîte Occulte	40	90%	10%	2d6	Spéciale/Unique très rare
+Boîte Interdite	100	100%	0%	—	Rune garantie, unique possible
+🎲 Probabilités de Runes par Rareté
+Rareté	Flétrie	Malveillante	Abysses	Occulte	Interdite
+Rare	100%	80%	50%	30%	—
+Super-Rare	—	20%	35%	40%	20%
+Légendaire	—	—	15%	25%	50%
+Spéciale	—	—	5%	20%	25%
+Unique	—	—	1%	5%	5%
+
+Ces taux sont cumulatifs et peuvent se recouper si plusieurs effets s’appliquent.
+
+📦 Exemple de tirage : Boîte Malveillante (10 pièces corruption)
+
+Jet : Rune obtenue (super-rare) de type Contrôle
+
+Aucun fragment
+
+Description de la rune (MJ) : Rune de confusion mentale – Une fois activée, force une créature à relancer un jet de sauvegarde de Sagesse échoué (1/jour)
+
+📋 Système d’Échange des Fragments
+
+Interface ou PNJ permettant d’acheter une rune type + rareté
+
+Ex : 5 fragments → rune d’attaque rare
+
+Peut être soumis à un temps d’attente ou une quête annexe RP (à la discrétion du MJ)
+
+🌐 Interface visuelle (si application numérique)
+
+Boutique de Runes
+
+Présentation des 5 lootboxes avec leurs taux et coûts
+
+
+Effets visuels aléatoires lors de l’ouverture (lumières violettes, runes qui flottent,…)
+
+Journal des Tirs
+
+Historique des ouvertures avec affichage des gains
+
+Bonus visuels pour les tirages rares
+
+Échangeur de Fragments
+
+
+Confirmation avec coût en fragments
+
+
+
+🎰 Jeu 3 – Machine à sous corrompue
+
+Nom suggéré : "L'Œil du Destin Pourpre"
+
+🧾 Règles de base
+
+Coût par tour : 5 pièces de corruption
+
+Format : 3 rouleaux – 1 ligne de gain (alignement horizontal uniquement)
+
+Condition de gain : Obtenir 3 symboles identiques alignés
+
+Récompenses : Dépendent du symbole aligné
+
+Récompenses alternatives : Certains combos partiels (2 symboles identiques) offrent des fragments de rune.
+
+🎰 Les Symboles (par rareté et effets)
+Symbole	Apparence (suggérée)				Rareté	Fréquence (%)	Récompense si aligné	Récompense partielle (2 symboles)
+💀 Crâne violet	Rune sombre avec fumée			Rare		20%	Objet rare		1 fragment
+🔥 Flamme noire	Flamme maudite en animation		Super-Rare	15%	Objet super-rare	2 fragments
+👁️ Œil violet ouvert	Œil du chaos			Légendaire	5%	Objet légendaire	3 fragments
+💎 Fragment maudit	Cristal fracturé		Commun		25%	5 fragments de rune	1 fragment
+🪙 Pièce maudite	Pièce brillante violette	Commun		20%	15 pièces de corruption	2 pièces
+❌ Griffe ratée	Griffe sanglante ou cassée	Échec total		15%	Rien			Rien
+
+Total = 100%
+
+💡 Équilibrage – Probabilités par rouleau
+
+Chaque rouleau contient une répartition pondérée des symboles.
+
+Rouleau 1 : Favorise les fragments et les pièces
+
+Rouleau 2 : Équilibré entre gains et échecs
+
+Rouleau 3 : Légèrement plus chanceux (pour l'espoir du jackpot)
+
+Les vraies probabilités de triple alignement restent faibles, mais le jeu permet des gains fréquents de fragments.
+
+🏆 Tableau des Récompenses par Triple Alignement
+Combinaison gagnante	Récompense
+💀💀💀 (Crâne violet)	Objet rare (rune, potion, artefact simple)
+🔥🔥🔥 (Flamme noire)	Objet super-rare (arme +1, rune spéciale, anneau)
+👁️👁️👁 (Œil violet)	Objet légendaire ou rune unique (1% bonus RP)
+💎💎💎 (Fragments)	5d4 fragments de rune
+🪙🪙🪙 (Pièces)	50 pièces de corruption
+❌❌❌ (Griffes)	Un effet néfaste léger (RP : malus temporaire ?)
+🧩 Récompenses partielles (2 symboles alignés)
+Combinaison	Récompense
+2x Crâne	1 fragment de rune
+2x Flamme	2 fragments
+2x Œil	3 fragments
+2x Fragment	1 fragment
+2x Pièce	2 pièces de corruption
+2x Griffe	Rien
+🌌 Éléments RP ou visuels (facultatif mais immersif)
+
+Effets visuels : Chaque symbole émet une aura (rouge, violette, noire) selon sa rareté.
+
+Effets sonores : Chant maudit quand une combinaison rare s’approche.
+
+Personnalité de la machine : L'Œil du Destin vous parle parfois (à l'écris) ("Encore ?", "Ton âme vibre d'espoir... inutile.")
+
+Effet de corruption : Après 3 tentatives sans gain, un "malus" apparais et ajoute un point d'épuisement (jusqu'à 6 avant le décès du joueurs)
+
+💡 Exemple de tirage
+
+Le joueur met 5 pièces → la machine tourne :
+
+Résultat : 💀 – 💎 – 💀
+
+→ 2x Crâne violet = 1 fragment de rune (gain partiel)

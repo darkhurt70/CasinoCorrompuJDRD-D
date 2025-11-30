@@ -1,0 +1,618 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #1a0033 0%, #0d001a 100%);
+    color: #e0e0e0;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* ========================================
+   HEADER & MONNAIES
+   ======================================== */
+
+.casino-header {
+    background: linear-gradient(135deg, #2d1b4e 0%, #1a0f2e 100%);
+    border: 2px solid #6B46C1;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 30px rgba(107, 70, 193, 0.5);
+}
+
+.casino-header h1 {
+    text-align: center;
+    font-size: 2.5em;
+    color: #B794F4;
+    text-shadow: 0 0 20px rgba(183, 148, 244, 0.8);
+    margin-bottom: 15px;
+}
+
+.currency-display {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.currency {
+    background: rgba(107, 70, 193, 0.2);
+    border: 2px solid #6B46C1;
+    border-radius: 10px;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.currency-label {
+    font-size: 0.9em;
+    color: #9F7AEA;
+}
+
+.currency-value {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #FFD700;
+}
+
+.currency-symbol {
+    font-size: 1.2em;
+}
+
+/* ========================================
+   NAVIGATION
+   ======================================== */
+
+.game-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.tab-btn {
+    background: linear-gradient(135deg, #2d1b4e 0%, #1a0f2e 100%);
+    border: 2px solid #6B46C1;
+    color: #B794F4;
+    padding: 12px 25px;
+    font-size: 1.1em;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.tab-btn:hover {
+    background: linear-gradient(135deg, #3d2b5e 0%, #2a1f3e 100%);
+    box-shadow: 0 0 20px rgba(107, 70, 193, 0.6);
+    transform: translateY(-2px);
+}
+
+.tab-btn.active {
+    background: linear-gradient(135deg, #6B46C1 0%, #553C9A 100%);
+    color: #fff;
+    box-shadow: 0 0 25px rgba(107, 70, 193, 0.8);
+}
+
+/* ========================================
+   SECTIONS DE JEU
+   ======================================== */
+
+.game-section {
+    display: none;
+    background: linear-gradient(135deg, #2d1b4e 0%, #1a0f2e 100%);
+    border: 2px solid #6B46C1;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 0 30px rgba(107, 70, 193, 0.4);
+}
+
+.game-section.active {
+    display: block;
+}
+
+.game-section h2 {
+    text-align: center;
+    color: #B794F4;
+    font-size: 2em;
+    margin-bottom: 30px;
+    text-shadow: 0 0 15px rgba(183, 148, 244, 0.6);
+}
+
+/* ========================================
+   ROULETTE
+   ======================================== */
+
+.roulette-container {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.roulette-wheel {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+#roulette-canvas {
+    background: radial-gradient(circle, #1a0f2e 0%, #0d0721 100%);
+    border: 3px solid #6B46C1;
+    border-radius: 50%;
+    box-shadow: 0 0 40px rgba(107, 70, 193, 0.6);
+}
+
+.result-display {
+    display: none;
+    background: rgba(107, 70, 193, 0.9);
+    color: #fff;
+    padding: 15px 30px;
+    border-radius: 10px;
+    font-size: 1.5em;
+    font-weight: bold;
+    box-shadow: 0 0 30px rgba(183, 148, 244, 0.8);
+}
+
+.betting-area {
+    flex: 1;
+    min-width: 300px;
+}
+
+.betting-area h3 {
+    color: #9F7AEA;
+    margin-bottom: 15px;
+}
+
+.bet-input {
+    margin-bottom: 20px;
+}
+
+.bet-input label {
+    display: block;
+    color: #B794F4;
+    margin-bottom: 5px;
+}
+
+.bet-input input {
+    width: 100%;
+    padding: 10px;
+    background: rgba(107, 70, 193, 0.2);
+    border: 2px solid #6B46C1;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 1.1em;
+}
+
+.bet-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.bet-btn {
+    background: linear-gradient(135deg, #553C9A 0%, #3d2b5e 100%);
+    border: 2px solid #6B46C1;
+    color: #fff;
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: all 0.3s ease;
+}
+
+.bet-btn:hover {
+    background: linear-gradient(135deg, #6B46C1 0%, #553C9A 100%);
+    box-shadow: 0 0 15px rgba(107, 70, 193, 0.6);
+    transform: scale(1.05);
+}
+
+.bet-btn.red {
+    background: linear-gradient(135deg, #8B0000 0%, #5a0000 100%);
+}
+
+.bet-btn.black {
+    background: linear-gradient(135deg, #1a1a1a 0%, #000000 100%);
+}
+
+.bet-btn.green {
+    background: linear-gradient(135deg, #4B0082 0%, #2d004e 100%);
+}
+
+.number-bet {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.number-bet label {
+    color: #B794F4;
+    white-space: nowrap;
+}
+
+.number-bet input {
+    flex: 1;
+    padding: 10px;
+    background: rgba(107, 70, 193, 0.2);
+    border: 2px solid #6B46C1;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 1em;
+}
+
+.action-btn {
+    width: 100%;
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+    border: 3px solid #FFD700;
+    color: #1a0f2e;
+    padding: 15px;
+    font-size: 1.2em;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+}
+
+.action-btn:hover {
+    background: linear-gradient(135deg, #FFA500 0%, #FFD700 100%);
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.8);
+}
+
+.action-btn:disabled {
+    background: #555;
+    border-color: #333;
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+/* ========================================
+   LOOTBOXES
+   ======================================== */
+
+.lootbox-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.lootbox-shop {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.lootbox-item {
+    background: linear-gradient(135deg, #2d1b4e 0%, #1a0f2e 100%);
+    border: 2px solid #6B46C1;
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.lootbox-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 30px rgba(107, 70, 193, 0.8);
+}
+
+.lootbox-item h3 {
+    color: #B794F4;
+    margin-bottom: 10px;
+    font-size: 1.2em;
+}
+
+.box-icon {
+    font-size: 3em;
+    margin: 15px 0;
+}
+
+.lootbox-item .price {
+    color: #FFD700;
+    font-size: 1.5em;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.lootbox-item .desc {
+    color: #9F7AEA;
+    font-size: 0.9em;
+    margin-bottom: 15px;
+}
+
+.buy-box-btn {
+    background: linear-gradient(135deg, #6B46C1 0%, #553C9A 100%);
+    border: 2px solid #B794F4;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: all 0.3s ease;
+}
+
+.buy-box-btn:hover {
+    background: linear-gradient(135deg, #553C9A 0%, #6B46C1 100%);
+    box-shadow: 0 0 20px rgba(183, 148, 244, 0.6);
+}
+
+.opening-animation {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    background: rgba(107, 70, 193, 0.1);
+    border: 2px solid #6B46C1;
+    border-radius: 15px;
+}
+
+.reward-display {
+    font-size: 1.5em;
+    color: #FFD700;
+    text-align: center;
+    padding: 20px;
+}
+
+.rune-reward {
+    background: rgba(107, 70, 193, 0.3);
+    border: 3px solid;
+    border-radius: 10px;
+    padding: 20px;
+    animation: glow 1s ease-in-out infinite alternate;
+}
+
+.rune-reward.rare {
+    border-color: #3B82F6;
+    color: #3B82F6;
+}
+
+.rune-reward.superRare {
+    border-color: #FFD700;
+    color: #FFD700;
+}
+
+.rune-reward.legendaire {
+    border-color: #9F7AEA;
+    color: #9F7AEA;
+}
+
+.rune-reward.speciale {
+    border-color: #F59E0B;
+    color: #F59E0B;
+}
+
+.rune-reward.unique {
+    border-color: #1a1a1a;
+    color: #B794F4;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d1b4e 100%);
+}
+
+.fragment-reward {
+    color: #9F7AEA;
+    font-size: 1.5em;
+}
+
+@keyframes glow {
+    from {
+        box-shadow: 0 0 10px currentColor;
+    }
+    to {
+        box-shadow: 0 0 30px currentColor;
+    }
+}
+
+/* ========================================
+   MACHINE À SOUS
+   ======================================== */
+
+.slot-container {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.slot-machine {
+    background: linear-gradient(135deg, #1a0f2e 0%, #0d0721 100%);
+    border: 3px solid #6B46C1;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 0 40px rgba(107, 70, 193, 0.7);
+    min-width: 350px;
+}
+
+.slot-title {
+    text-align: center;
+    color: #B794F4;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    text-shadow: 0 0 15px rgba(183, 148, 244, 0.8);
+}
+
+.slot-message {
+    text-align: center;
+    color: #9F7AEA;
+    font-style: italic;
+    margin-bottom: 20px;
+    min-height: 30px;
+}
+
+.slot-reels {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 30px 0;
+}
+
+.reel {
+    background: linear-gradient(135deg, #2d1b4e 0%, #1a0f2e 100%);
+    border: 3px solid #6B46C1;
+    border-radius: 15px;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset 0 0 20px rgba(107, 70, 193, 0.5);
+}
+
+.symbol {
+    font-size: 3em;
+    user-select: none;
+}
+
+.slot-info {
+    text-align: center;
+    margin: 20px 0;
+    color: #B794F4;
+}
+
+.slot-info .warning {
+    color: #FFA500;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.slot-info .danger {
+    color: #FF4444;
+    font-weight: bold;
+    margin-top: 10px;
+    animation: pulse 1s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+.slot-paytable {
+    background: rgba(107, 70, 193, 0.2);
+    border: 2px solid #6B46C1;
+    border-radius: 15px;
+    padding: 20px;
+    min-width: 300px;
+}
+
+.slot-paytable h4 {
+    color: #B794F4;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.paytable-item {
+    color: #9F7AEA;
+    padding: 8px;
+    margin: 5px 0;
+    background: rgba(107, 70, 193, 0.1);
+    border-radius: 5px;
+}
+
+/* ========================================
+   LOGS
+   ======================================== */
+
+.game-log {
+    margin-top: 30px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 2px solid #6B46C1;
+    border-radius: 10px;
+    padding: 15px;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.log-entry {
+    padding: 5px;
+    margin: 3px 0;
+    border-left: 3px solid;
+    padding-left: 10px;
+    font-size: 0.9em;
+}
+
+.log-entry.info {
+    border-color: #3B82F6;
+    color: #93C5FD;
+}
+
+.log-entry.success {
+    border-color: #10B981;
+    color: #6EE7B7;
+}
+
+.log-entry.error {
+    border-color: #EF4444;
+    color: #FCA5A5;
+}
+
+.log-entry.danger {
+    border-color: #DC2626;
+    color: #FF4444;
+    font-weight: bold;
+}
+
+/* ========================================
+   SCROLLBAR
+   ======================================== */
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(107, 70, 193, 0.1);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #6B46C1;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #553C9A;
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+
+@media (max-width: 768px) {
+    .casino-header h1 {
+        font-size: 1.8em;
+    }
+
+    .currency-display {
+        flex-direction: column;
+    }
+
+    .roulette-container,
+    .slot-container {
+        flex-direction: column;
+    }
+
+    .lootbox-shop {
+        grid-template-columns: 1fr;
+    }
+
+    #roulette-canvas {
+        width: 300px;
+        height: 300px;
+    }
+}

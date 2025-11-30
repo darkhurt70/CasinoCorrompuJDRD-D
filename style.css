@@ -402,13 +402,13 @@ body {
 }
 
 .rune-reward.superRare {
-    border-color: #FFD700;
-    color: #FFD700;
+    border-color: #9F7AEA;
+    color: #9F7AEA;
 }
 
 .rune-reward.legendaire {
-    border-color: #9F7AEA;
-    color: #9F7AEA;
+    border-color: #FFD700;
+    color: #FFD700;
 }
 
 .rune-reward.speciale {
@@ -417,9 +417,25 @@ body {
 }
 
 .rune-reward.unique {
-    border-color: #1a1a1a;
-    color: #B794F4;
-    background: linear-gradient(135deg, #1a1a1a 0%, #2d1b4e 100%);
+    border-color: #DC143C;
+    color: #FFD700;
+    background: linear-gradient(135deg, #8B0000 0%, #DC143C 50%, #8B0000 100%);
+    border-width: 4px;
+    font-size: 1.3em;
+    font-weight: bold;
+    text-shadow: 0 0 20px #DC143C, 0 0 40px #FF0000;
+}
+
+.unique-animation {
+    animation: unique-pulse 1.5s ease-in-out infinite, unique-glow 2s ease-in-out infinite alternate;
+}
+
+.unique-glow {
+    display: block;
+    font-size: 1.4em;
+    color: #FFD700;
+    text-shadow: 0 0 30px #FFD700, 0 0 50px #FFA500;
+    animation: glow-intense 1s ease-in-out infinite alternate;
 }
 
 .fragment-reward {
@@ -433,6 +449,33 @@ body {
     }
     to {
         box-shadow: 0 0 30px currentColor;
+    }
+}
+
+@keyframes unique-pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+@keyframes unique-glow {
+    from {
+        box-shadow: 0 0 30px #DC143C, 0 0 60px #FF0000, 0 0 90px #8B0000;
+    }
+    to {
+        box-shadow: 0 0 50px #DC143C, 0 0 100px #FF0000, 0 0 150px #8B0000;
+    }
+}
+
+@keyframes glow-intense {
+    from {
+        text-shadow: 0 0 20px #FFD700, 0 0 40px #FFA500;
+    }
+    to {
+        text-shadow: 0 0 40px #FFD700, 0 0 80px #FFA500, 0 0 120px #FF8C00;
     }
 }
 
@@ -686,13 +729,13 @@ body {
 }
 
 .super-rare-rune {
-    background: radial-gradient(circle, rgba(255, 215, 0, 0.3) 0%, transparent 70%);
-    box-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+    background: radial-gradient(circle, rgba(159, 122, 234, 0.3) 0%, transparent 70%);
+    box-shadow: 0 0 30px rgba(159, 122, 234, 0.5);
 }
 
 .legendary-rune {
-    background: radial-gradient(circle, rgba(159, 122, 234, 0.3) 0%, transparent 70%);
-    box-shadow: 0 0 30px rgba(159, 122, 234, 0.5);
+    background: radial-gradient(circle, rgba(255, 215, 0, 0.3) 0%, transparent 70%);
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
 }
 
 .exchange-item h3 {

@@ -298,39 +298,52 @@ const lootboxData = {
         cost: 5,
         runeChance: 0.4,
         fragmentDice: '1d4',
-        rarities: { rare: 1.0 }
+        // 100% rare, dont 10% sont des runes spéciales
+        baseRarities: { rare: 1.0 },
+        specialeChance: 0.1,
+        uniqueChance: 0 // Pas d'unique possible
     },
     malveillante: {
         cost: 10,
         runeChance: 0.55,
         fragmentDice: '1d6',
-        rarities: { rare: 0.8, superRare: 0.2 }
+        // 85% rare, 15% super-rare, et 15% de chance globale d'être spéciale
+        baseRarities: { rare: 0.85, superRare: 0.15 },
+        specialeChance: 0.15,
+        uniqueChance: 0 // Pas d'unique possible
     },
     abysses: {
         cost: 20,
         runeChance: 0.75,
         fragmentDice: '1d8',
-        rarities: { rare: 0.5, superRare: 0.35, legendaire: 0.15, speciale: 0.05, unique: 0.01 }
+        // Répartition normale avec spéciale possible à toutes raretés
+        baseRarities: { rare: 0.5, superRare: 0.35, legendaire: 0.15 },
+        specialeChance: 0.11,
+        uniqueChance: 0.01 // 1% de chance directe d'unique (sera légendaire)
     },
     occulte: {
         cost: 40,
         runeChance: 0.9,
         fragmentDice: '2d6',
-        rarities: { rare: 0.3, superRare: 0.4, legendaire: 0.25, speciale: 0.2, unique: 0.05 }
+        baseRarities: { rare: 0.3, superRare: 0.4, legendaire: 0.3 },
+        specialeChance: 0.13,
+        uniqueChance: 0.05 // 5% de chance directe d'unique (sera légendaire)
     },
     interdite: {
         cost: 100,
         runeChance: 1.0,
         fragmentDice: null,
-        rarities: { rare: 0, superRare: 0.2, legendaire: 0.5, speciale: 0.25, unique: 0.05 }
+        baseRarities: { superRare: 0.2, legendaire: 0.8 },
+        specialeChance: 0.25,
+        uniqueChance: 0.05 // 5% de chance directe d'unique (sera légendaire)
     }
 };
 
 const runeTypes = ['Attaque', 'Dégâts', 'Contrôle', 'Spéciale', 'Unique'];
 const rarityColors = {
     rare: '🔵',
-    superRare: '🟡',
-    legendaire: '🟣',
+    superRare: '🟣',
+    legendaire: '🟡',
     speciale: '⭐',
     unique: '⚫'
 };
@@ -370,7 +383,9 @@ const lootboxDetails = {
         fragmentAmount: '1d4 (1-4)',
         rarities: [
             { name: 'Rare 🔵', chance: '100%' }
-        ]
+        ],
+        special: '10% de chance que la rune soit de type Spéciale',
+        unique: 'Aucune chance de rune Unique'
     },
     malveillante: {
         name: 'Boîte Malveillante',
@@ -379,9 +394,11 @@ const lootboxDetails = {
         fragmentChance: '45%',
         fragmentAmount: '1d6 (1-6)',
         rarities: [
-            { name: 'Rare 🔵', chance: '80%' },
-            { name: 'Super-Rare 🟡', chance: '20%' }
-        ]
+            { name: 'Rare 🔵', chance: '85%' },
+            { name: 'Super-Rare 🟡', chance: '15%' }
+        ],
+        special: '15% de chance que la rune soit de type Spéciale',
+        unique: 'Aucune chance de rune Unique'
     },
     abysses: {
         name: 'Boîte des Abysses',
@@ -392,10 +409,10 @@ const lootboxDetails = {
         rarities: [
             { name: 'Rare 🔵', chance: '50%' },
             { name: 'Super-Rare 🟡', chance: '35%' },
-            { name: 'Légendaire 🟣', chance: '15%' },
-            { name: 'Spéciale ⭐', chance: '5%' },
-            { name: 'Unique ⚫', chance: '1%' }
-        ]
+            { name: 'Légendaire 🟣', chance: '15%' }
+        ],
+        special: '11% de chance que la rune soit de type Spéciale',
+        unique: '1% de chance directe de rune Unique Légendaire'
     },
     occulte: {
         name: 'Boîte Occulte',
@@ -406,10 +423,10 @@ const lootboxDetails = {
         rarities: [
             { name: 'Rare 🔵', chance: '30%' },
             { name: 'Super-Rare 🟡', chance: '40%' },
-            { name: 'Légendaire 🟣', chance: '25%' },
-            { name: 'Spéciale ⭐', chance: '20%' },
-            { name: 'Unique ⚫', chance: '5%' }
-        ]
+            { name: 'Légendaire 🟣', chance: '30%' }
+        ],
+        special: '13% de chance que la rune soit de type Spéciale',
+        unique: '5% de chance directe de rune Unique Légendaire'
     },
     interdite: {
         name: 'Boîte Interdite',
@@ -419,10 +436,10 @@ const lootboxDetails = {
         fragmentAmount: 'Aucun',
         rarities: [
             { name: 'Super-Rare 🟡', chance: '20%' },
-            { name: 'Légendaire 🟣', chance: '50%' },
-            { name: 'Spéciale ⭐', chance: '25%' },
-            { name: 'Unique ⚫', chance: '5%' }
-        ]
+            { name: 'Légendaire 🟣', chance: '80%' }
+        ],
+        special: '25% de chance que la rune soit de type Spéciale',
+        unique: '5% de chance directe de rune Unique Légendaire'
     }
 };
 
@@ -457,8 +474,27 @@ document.querySelectorAll('.details-box-btn').forEach(btn => {
         detailsHTML += `
                 </ul>
             </div>
+        `;
+
+        // Ajouter les infos sur les types spéciaux
+        if (details.special || details.unique) {
+            detailsHTML += `<div class="details-section">
+                <h4>Types spéciaux:</h4>`;
+
+            if (details.special) {
+                detailsHTML += `<p class="detail-item">⭐ ${details.special}</p>`;
+            }
+
+            if (details.unique) {
+                detailsHTML += `<p class="detail-item">⚫ ${details.unique}</p>`;
+            }
+
+            detailsHTML += `</div>`;
+        }
+
+        detailsHTML += `
             <div class="details-section">
-                <p class="detail-note"><em>Types de runes: Attaque, Dégâts, Contrôle, Spéciale, Unique</em></p>
+                <p class="detail-note"><em>Types de runes normaux: Attaque, Dégâts, Contrôle</em></p>
             </div>
         `;
 
@@ -491,29 +527,59 @@ function openLootbox(boxType, box) {
         const isRune = Math.random() < box.runeChance;
 
         if (isRune) {
-            // Déterminer la rareté
-            const rand = Math.random();
-            let cumulativeChance = 0;
             let rarity = 'rare';
+            let runeType = '';
+            let isUnique = false;
 
-            for (const [rarityKey, chance] of Object.entries(box.rarities)) {
-                cumulativeChance += chance;
-                if (rand <= cumulativeChance) {
-                    rarity = rarityKey;
-                    break;
+            // Étape 1: Vérifier d'abord si c'est une rune Unique (chance directe)
+            if (box.uniqueChance && Math.random() < box.uniqueChance) {
+                runeType = 'Unique';
+                rarity = 'legendaire'; // Les uniques sont toujours légendaires
+                isUnique = true;
+            } else {
+                // Étape 2: Déterminer la rareté de base
+                const rarityRand = Math.random();
+                let cumulativeChance = 0;
+
+                for (const [rarityKey, chance] of Object.entries(box.baseRarities)) {
+                    cumulativeChance += chance;
+                    if (rarityRand <= cumulativeChance) {
+                        rarity = rarityKey;
+                        break;
+                    }
+                }
+
+                // Étape 3: Déterminer le type de rune
+                // Vérifier si c'est une rune Spéciale (selon la chance de la boîte)
+                if (box.specialeChance && Math.random() < box.specialeChance) {
+                    runeType = 'Spéciale';
+                }
+                // Sinon, c'est un type normal (Attaque, Dégâts, Contrôle)
+                else {
+                    const normalTypes = ['Attaque', 'Dégâts', 'Contrôle'];
+                    runeType = normalTypes[Math.floor(Math.random() * normalTypes.length)];
                 }
             }
 
-            // Choisir un type de rune
-            const runeType = runeTypes[Math.floor(Math.random() * runeTypes.length)];
-
-            rewardDiv.innerHTML = `
-                <div class="rune-reward ${rarity}">
-                    ${rarityColors[rarity]} RUNE ${rarityNames[rarity].toUpperCase()}<br>
-                    Type: ${runeType}
-                </div>
-            `;
-            addLog('lootbox', `Rune obtenue: ${rarityNames[rarity]} - ${runeType} ${rarityColors[rarity]}`, 'success');
+            // Animation spéciale pour les Uniques
+            if (isUnique) {
+                rewardDiv.innerHTML = `
+                    <div class="rune-reward unique unique-animation">
+                        ⚫ RUNE UNIQUE LÉGENDAIRE ⚫<br>
+                        <span class="unique-glow">✦ INCROYABLE ✦</span><br>
+                        Type: ${runeType}
+                    </div>
+                `;
+                addLog('lootbox', `🎉 RUNE UNIQUE LÉGENDAIRE OBTENUE ! Type: ${runeType} ⚫`, 'success');
+            } else {
+                rewardDiv.innerHTML = `
+                    <div class="rune-reward ${rarity}">
+                        ${rarityColors[rarity]} RUNE ${rarityNames[rarity].toUpperCase()}<br>
+                        Type: ${runeType}
+                    </div>
+                `;
+                addLog('lootbox', `Rune obtenue: ${rarityNames[rarity]} - ${runeType} ${rarityColors[rarity]}`, 'success');
+            }
         } else {
             // Fragments
             let fragmentAmount = 0;
@@ -578,12 +644,12 @@ let slotSpinning = false;
 document.getElementById('slot-spin-btn').addEventListener('click', () => {
     if (slotSpinning) return;
 
-    if (corruption < 5) {
-        addLog('slot', 'Pièces de corruption insuffisantes (5 requis) !', 'error');
+    if (corruption < 1) {
+        addLog('slot', 'Pièces de corruption insuffisantes (1 requis) !', 'error');
         return;
     }
 
-    corruption -= 5;
+    corruption -= 1;
     updateCurrency();
     slotSpinning = true;
 
